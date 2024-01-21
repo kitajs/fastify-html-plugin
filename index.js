@@ -28,6 +28,7 @@ function fastifyKitaHtml(fastify, opts, next) {
 
   // The normal .html handler is much simpler than the streamHtml one
   fastify.decorateReply('html', html);
+  fastify.decorateReply('setupHtmlStream', setupHtmlStream)
 
   // As JSX is evaluated from the inside out, renderToStream() method requires
   // a function to be able to execute some code before the JSX calls gets to
@@ -35,14 +36,7 @@ function fastifyKitaHtml(fastify, opts, next) {
   // streamHtml getter method.
   fastify.decorateReply('streamHtml', {
     getter() {
-      SUSPENSE_ROOT.requests.set(this.request.id, {
-        // As reply.raw is a instance of Writable, we can use it instead of
-        // creating a our own new stream.
-        stream: new WeakRef(this.raw),
-        running: 0,
-        sent: false
-      });
-
+      this.setupHtmlStream();
       return streamHtml;
     }
   });
@@ -54,6 +48,21 @@ function fastifyKitaHtml(fastify, opts, next) {
   }
 
   return next();
+
+  /**
+   * @type {import('fastify').FastifyReply['setupHtmlStream']}
+   */
+  function setupHtmlStream() {
+    SUSPENSE_ROOT.requests.set(this.request.id, {
+      // As reply.raw is a instance of Writable, we can use it instead of
+      // creating a our own new stream.
+      stream: new WeakRef(this.raw),
+      running: 0,
+      sent: false
+    });
+
+    return this;
+  }
 
   /**
    * @type {import('fastify').FastifyReply['html']}
