@@ -1,0 +1,43 @@
+{
+  "name": "@kitajs/fastify-html-plugin",
+  "version": "1.0.0",
+  "description": "A Fastify plugin to add support for @kitajs/html",
+  "main": "index.js",
+  "type": "commonjs",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "lint": "standard --verbose | snazzy",
+    "test": "npm run test:unit && npm run test:typescript",
+    "test:unit": "tap",
+    "test:typescript": "tsd"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kitajs/fastify-html-plugin.git"
+  },
+  "author": "Arthur Fiorette <kita@arthur.place>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kitajs/fastify-html-plugin/issues"
+  },
+  "homepage": "https://github.com/kitajs/fastify-html-plugin#readme",
+  "devDependencies": {
+    "@fastify/pre-commit": "^2.0.2",
+    "@types/node": "^20.11.5",
+    "fastify": "^4.0.0-rc.2",
+    "snazzy": "^9.0.0",
+    "standard": "^17.0.0",
+    "tap": "^16.0.0"
+  },
+  "dependencies": {
+    "@kitajs/html": "^3.0.11",
+    "fastify-plugin": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
