@@ -30,7 +30,10 @@ declare module 'fastify' {
      * @param html The HTML to send.
      * @returns The response.
      */
-    html(this: this, html: JSX.Element): ReturnType<this['send']>;
+    html(
+      this: this,
+      html: JSX.Element
+    ): ReturnType<this['send']> | Promise<ReturnType<this['send']>>;
 
     /**
      * Sends a HTML stream to the client, fully supporting `@kitajs/html`
@@ -38,7 +41,7 @@ declare module 'fastify' {
      *
      * **You must use `request.id` as the `Suspense`'s `rid` parameter.**
      *
-     * This method hijacks the response, as the html stream is just a single 
+     * This method hijacks the response, as the html stream is just a single
      * continuous stream in the http body, you cannot add/change the status
      * code, headers or trailers after calling this method.
      *
@@ -62,7 +65,10 @@ declare module 'fastify' {
      * @param html The HTML to send.
      * @returns The response.
      */
-    streamHtml(this: this, html: JSX.Element): ReturnType<this['send']>;
+    streamHtml(
+      this: this,
+      html: JSX.Element
+    ): ReturnType<this['send']> | Promise<ReturnType<this['send']>>;
   }
 }
 
