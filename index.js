@@ -1,10 +1,8 @@
 /// <reference path="./types/index.d.ts" />
 
-const fp = require('fastify-plugin');
-
 //@ts-expect-error - internal fastify symbol
 const { kReplyHeaders } = require('fastify/lib/symbols');
-
+const fp = require('fastify-plugin');
 const { pipeHtml } = require('@kitajs/html/suspense');
 const { prependDoctype } = require('./lib/prepend-doctype');
 const { isHtml } = require('./lib/is-html');
