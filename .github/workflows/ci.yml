@@ -5,8 +5,8 @@ on:
   pull_request:
 
 jobs:
-  build:
-    name: Build and test code
+  test:
+    name: Test code
     runs-on: ubuntu-latest
 
     steps:
@@ -23,12 +23,6 @@ jobs:
           cache: 'pnpm'
 
       - name: Install packages
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
-        run: pnpm build
-
-      - name: Link build
         run: pnpm install --frozen-lockfile
 
       - name: Test

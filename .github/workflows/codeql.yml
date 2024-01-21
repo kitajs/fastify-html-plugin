@@ -42,8 +42,5 @@ jobs:
       - name: Install packages
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
-
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
