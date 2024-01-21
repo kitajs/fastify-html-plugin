@@ -6,17 +6,14 @@
   "type": "commonjs",
   "types": "types/index.d.ts",
   "scripts": {
-    "test": "tsd && c8 --reporter lcov --reporter text node -r @swc-node/register --test test/**/*.test.tsx",
+    "test": "pnpm tsd && pnpm exec c8 --reporter lcov --reporter text node -r @swc-node/register --test test/**/*.test.tsx",
     "test:watch": "c8 --reporter lcov --reporter text node -r @swc-node/register --test --watch test/**/*.test.tsx",
     "format": "biome format --write .",
     "lint": "biome check .",
     "lint:fix": "biome check --apply-unsafe .",
     "lint:ci": "biome ci ."
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
+  "pre-commit": ["lint", "test"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kitajs/fastify-html-plugin.git"
@@ -28,12 +25,10 @@
   },
   "homepage": "https://github.com/kitajs/fastify-html-plugin#readme",
   "dependencies": {
-    "@kitajs/html": "^3.0.11",
     "fastify-plugin": "^4.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.2",
-    "@fastify/pre-commit": "^2.0.2",
     "@swc-node/register": "^1.6.8",
     "@swc/helpers": "^0.5.3",
     "@types/jsdom": "^21.1.6",
@@ -43,6 +38,9 @@
     "jsdom": "^24.0.0",
     "tsd": "^0.30.4",
     "tslib": "^2.6.2"
+  },
+  "peerDependencies": {
+    "@kitajs/html": ">=3.1"
   },
   "publishConfig": {
     "access": "public"
