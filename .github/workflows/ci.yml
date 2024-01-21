@@ -1,22 +1,35 @@
-name: CI
+name: Code CI
 
 on:
   push:
-    branches:
-     - main
-     - master
-     - next
-     - 'v*'
-    paths-ignore:
-      - 'docs/**'
-      - '*.md'
   pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - '*.md'
 
 jobs:
-  test:
-    uses: fastify/workflows/.github/workflows/plugins-ci.yml@v3
-    with:
-      license-check: true
+  build:
+    name: Build and test code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup node and restore cached dependencies
+        uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+
+      - name: Install packages
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Link build
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm test
+
