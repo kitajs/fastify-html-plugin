@@ -19,22 +19,22 @@ async function SleepForMs({ ms, children }: PropsWithChildren<{ ms: number }>) {
   return Html.contentsToString([children || String(ms)]);
 }
 
-// Detect leaks of pending promises
-afterEach(() => {
-  assert.equal(
-    SUSPENSE_ROOT.requests.size,
-    0,
-    'Suspense root left pending resources'
-  );
-
-  // Reset suspense root
-  SUSPENSE_ROOT.enabled = false;
-  SUSPENSE_ROOT.autoScript = true;
-  SUSPENSE_ROOT.requestCounter = 1;
-  SUSPENSE_ROOT.requests.clear();
-});
-
 describe('Suspense', () => {
+  // Detect leaks of pending promises
+  afterEach(() => {
+    assert.equal(
+      SUSPENSE_ROOT.requests.size,
+      0,
+      'Suspense root left pending resources'
+    );
+
+    // Reset suspense root
+    SUSPENSE_ROOT.enabled = false;
+    SUSPENSE_ROOT.autoScript = true;
+    SUSPENSE_ROOT.requestCounter = 1;
+    SUSPENSE_ROOT.requests.clear();
+  });
+
   test('Sync without suspense', async () => {
     await using app = fastify();
     app.register(fastifyKitaHtml);

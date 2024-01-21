@@ -23,10 +23,6 @@
     "test": "tsd && c8 --reporter lcov --reporter text node -r @swc-node/register --test test/**/*.test.tsx",
     "test:watch": "c8 --reporter lcov --reporter text node -r @swc-node/register --test --watch test/**/*.test.tsx"
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
   "dependencies": {
     "fastify-plugin": "^4.0.0"
   },
@@ -45,9 +41,6 @@
   },
   "peerDependencies": {
     "@kitajs/html": ">=3.1"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "packageManager": "pnpm@8.14.1"
 }
