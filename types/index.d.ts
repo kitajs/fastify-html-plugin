@@ -43,7 +43,7 @@ declare module 'fastify' {
      *
      * This method hijacks the response, as the html stream is just a single
      * continuous stream in the http body, you cannot add/change the status
-     * code, headers or trailers after calling this method.
+     * code or headers after calling this method.
      *
      * If the HTML does not start with a doctype and `opts.autoDoctype` is
      * enabled, it will be added automatically.
@@ -61,6 +61,8 @@ declare module 'fastify' {
      *   );
      * });
      * ```
+     *
+     * **Http trailers are not yet supported when using `streamHtml`**
      *
      * @param html The HTML to send.
      * @returns The response.
