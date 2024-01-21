@@ -6,7 +6,7 @@
   "type": "commonjs",
   "types": "types/index.d.ts",
   "scripts": {
-    "test": "pnpm tsd && pnpm exec c8 --reporter lcov --reporter text node -r @swc-node/register --test test/**/*.test.tsx",
+    "test": "tsd && c8 --reporter lcov --reporter text node -r @swc-node/register --test test/**/*.test.tsx",
     "test:watch": "c8 --reporter lcov --reporter text node -r @swc-node/register --test --watch test/**/*.test.tsx",
     "format": "biome format --write .",
     "lint": "biome check .",
