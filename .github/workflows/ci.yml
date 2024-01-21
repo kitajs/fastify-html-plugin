@@ -19,7 +19,8 @@ jobs:
       - name: Setup node and restore cached dependencies
         uses: actions/setup-node@v4
         with:
-          cache: "pnpm"
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
 
       - name: Install packages
         run: pnpm install --frozen-lockfile
