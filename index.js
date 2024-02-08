@@ -28,7 +28,7 @@ function fastifyKitaHtml(fastify, opts, next) {
 
   // The normal .html handler is much simpler than the streamHtml one
   fastify.decorateReply('html', html);
-  fastify.decorateReply('setupHtmlStream', setupHtmlStream)
+  fastify.decorateReply('setupHtmlStream', setupHtmlStream);
 
   // As JSX is evaluated from the inside out, renderToStream() method requires
   // a function to be able to execute some code before the JSX calls gets to

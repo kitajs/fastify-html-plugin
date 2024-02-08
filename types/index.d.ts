@@ -31,7 +31,7 @@ declare module 'fastify' {
      * @param html The HTML to send.
      * @returns The response.
      */
-    html(this:this,html: JSX.Element): this | Promise<this>;
+    html(this: this, html: JSX.Element): this | Promise<this>;
 
     /**
      * Sends the html to the browser as a single stream, the entire component
@@ -67,7 +67,7 @@ declare module 'fastify' {
      * @param html The HTML to send.
      * @returns The response.
      */
-    streamHtml(this:this,html: JSX.Element): this | Promise<this>;
+    streamHtml(this: this, html: JSX.Element): this | Promise<this>;
 
     /**
      * This function is called internally by the `streamHtml` getter.
@@ -85,7 +85,7 @@ declare module 'fastify' {
      * by `streamHtml`.
      *
      * @example
-     * 
+     *
      * ```tsx
      * app.get('/bad', (_, reply) => {
      *   const html = <Layout /> // Error: Request data was deleted before all
@@ -109,7 +109,7 @@ declare module 'fastify' {
      * })
      * ```
      */
-    setupHtmlStream(this:this): this;
+    setupHtmlStream(this: this): this;
   }
 }
 

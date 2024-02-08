@@ -1,11 +1,11 @@
 /// <reference types="@kitajs/html/htmx" />
 
-import fastify from 'fastify';
-import { fastifyKitaHtml } from '..';
-import Html from '@kitajs/html';
 import fastifyFormbody from '@fastify/formbody';
+import Html from '@kitajs/html';
 import { Suspense } from '@kitajs/html/suspense';
+import fastify from 'fastify';
 import { setTimeout } from 'timers/promises';
+import { fastifyKitaHtml } from '..';
 
 const app = fastify({ logger: true });
 
